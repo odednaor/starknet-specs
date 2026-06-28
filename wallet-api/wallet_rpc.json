@@ -634,6 +634,52 @@
       ]
     },
     {
+      "name": "wallet_strk20DeriveIdentityKey",
+      "summary": "Derive the STRK20 identity key for a target contract",
+      "description": "Returns the identity key forwarded to a target contract's privacy_compute during a compute-and-invoke action: a pseudonymous handle, derived by the wallet from the user's identity and contract_address.",
+      "params": [
+        {
+          "name": "contract_address",
+          "description": "The target contract the identity key is bound to, whose privacy_compute the dapp will call",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/ADDRESS"
+          }
+        },
+        {
+          "name": "api_version",
+          "required": false,
+          "schema": {
+            "$ref": "#/components/schemas/API_VERSION"
+          }
+        }
+      ],
+      "result": {
+        "name": "result",
+        "description": "The identity key bound to the user and contract_address",
+        "schema": {
+          "$ref": "#/components/schemas/FELT"
+        }
+      },
+      "errors": [
+        {
+          "$ref": "#/components/errors/NOT_REGISTERED"
+        },
+        {
+          "$ref": "#/components/errors/INVALID_REQUEST_PAYLOAD"
+        },
+        {
+          "$ref": "#/components/errors/USER_REFUSED_OP"
+        },
+        {
+          "$ref": "#/components/errors/API_VERSION_NOT_SUPPORTED"
+        },
+        {
+          "$ref": "#/components/errors/UNKNOWN_ERROR"
+        }
+      ]
+    },
+    {
       "name": "wallet_signTypedData",
       "summary": "Sign typed data using the wallet",
       "description": "When wallet is locked, open wallet-unlock UI. When Dapp is not approved, display Dapp-approve UI. When wallet is connected and unlocked, display sign-typed-data UI.",
